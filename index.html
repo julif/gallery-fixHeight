@@ -13,10 +13,14 @@
     /* max-width: 1200px; */
     margin: 0px auto;}
     img{ height:  250px;  }
+    @media screen and (max-width:1000px) { 
+      /* a,img{ width: 100%!important;} */
+}
+
    
     </style>
   </head>
-  <body>
+  <body onresize="justifiedGallery_responsive_size()">
     <section>
   <div id="mygallery" >
     <a href="img/1.jpg">
@@ -92,13 +96,47 @@
 </section>
   </body>
   <script>
+  justifiedGallery_responsive_size();
+
+
+function justifiedGallery_responsive_size(){
+  if (window.matchMedia("(orientation: portrait)").matches) {
+   // you're in PORTRAIT mode
+     //  $("#mygallery").justifiedGallery( );
   
-  //  $("#mygallery").justifiedGallery( );
-  
-   $('#mygallery').justifiedGallery({
-    rowHeight : 200,
+     $('#mygallery').justifiedGallery({
+    rowHeight : 120,
     margins : 8
 });
+}
+
+if (window.matchMedia("(orientation: landscape)").matches) {
+   // you're in LANDSCAPE mode
+   if(window.innerWidth <= 1000 ) {
+     
+   //  $("#mygallery").justifiedGallery( );
+    $('#mygallery').justifiedGallery({
+    rowHeight : 120,
+    margins : 8
+  });
+
+   } else {
+      //  $("#mygallery").justifiedGallery( );
+    $('#mygallery').justifiedGallery({
+    rowHeight : 200,
+    margins : 8
+  });
+   }
+    
+
+}
+
+
+}
   
+
+
+
+
   </script>
 </html>
